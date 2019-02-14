@@ -1,4 +1,4 @@
-package uk.co.syski.client.System.Components;
+package uk.co.syski.client.System.Components.Static;
 
 public class CPU
 {
