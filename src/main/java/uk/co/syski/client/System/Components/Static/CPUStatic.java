@@ -6,7 +6,7 @@ public class CPUStatic
     private String model;
     private String manufacturer;
     private String arch;
-    private String clock;
+    private int clock; //DTO is double, change if needed.
     private int coreCount;
     private int threadCount;
 
@@ -31,7 +31,7 @@ public class CPUStatic
         return arch;
     }
 
-    public String getClock()
+    public int getClock()
     {
         return clock;
     }
@@ -69,13 +69,9 @@ public class CPUStatic
 
     public void setClock(int c)
     {
-
-    }
-
-    public void setClock(String c)
-    {
         clock = c;
     }
+
 
     public void setCoreCount(int cc)
     {
