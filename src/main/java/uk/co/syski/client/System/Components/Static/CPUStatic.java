@@ -67,6 +67,11 @@ public class CPUStatic
         arch = a;
     }
 
+    public void setClock(int c)
+    {
+
+    }
+
     public void setClock(String c)
     {
         clock = c;
