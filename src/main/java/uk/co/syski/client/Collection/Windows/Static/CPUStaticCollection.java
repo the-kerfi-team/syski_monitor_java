@@ -15,6 +15,6 @@ public class CPUStaticCollection
 
     public static String getCPUName() throws IOException
     {
-        return WMICInterface.getInfo("cpu", new String[] {"loadpercentage", "name"})[1];
+        return WMICInterface.getInfo("cpu", new String[] {"name"})[0];
     }
 }
