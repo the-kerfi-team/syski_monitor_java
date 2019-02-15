@@ -1,6 +1,6 @@
 package uk.co.syski.client.System.Components.Static;
 
-public class CPU
+public class CPUStatic
 {
     private int id;
     private String model;

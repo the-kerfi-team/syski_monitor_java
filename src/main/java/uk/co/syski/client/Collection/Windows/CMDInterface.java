@@ -1,4 +1,4 @@
-package uk.co.syski.client.Collection;
+package uk.co.syski.client.Collection.Windows;
 
 import java.io.BufferedReader;
 import java.io.IOException;

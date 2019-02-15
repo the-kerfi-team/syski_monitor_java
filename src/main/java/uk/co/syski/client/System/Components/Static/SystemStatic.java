@@ -1,6 +1,6 @@
 package uk.co.syski.client.System.Components.Static;
 
-public class System
+public class SystemStatic
 {
     private int id;
     private String model;
