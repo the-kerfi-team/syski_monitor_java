@@ -19,9 +19,7 @@ public class CMDInterface
         BufferedReader input = new BufferedReader(new InputStreamReader(process.getInputStream()));
         LinkedList<String> output = new LinkedList<>();
         while ((line = input.readLine()) != null)
-        {
             output.add(line.trim());
-        }
         input.close();
         return output.toArray(new String[output.size()]);
     }
