@@ -192,3 +192,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+#Extra IntelliJ
+.idea/
+*.iml
