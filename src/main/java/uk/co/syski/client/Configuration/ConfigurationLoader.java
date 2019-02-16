@@ -38,7 +38,7 @@ public class ConfigurationLoader
         if (configINI != null)
         {
             AccountConfiguration.setAccessToken(configINI.get("account", "accesstoken"));
-            AccountConfiguration.setRefreshToken(configINI.get("account", "refreshtoken"))
+            AccountConfiguration.setRefreshToken(configINI.get("account", "refreshtoken"));
         }
         else
             throw new NullPointerException("Please load the INI file before loading configurations.");
