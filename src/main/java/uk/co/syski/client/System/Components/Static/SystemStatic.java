@@ -3,10 +3,7 @@ package uk.co.syski.client.System.Components.Static;
 public class SystemStatic
 {
     private int id;
-    private String model;
-    private String manufacturer;
-    private String type;
-    private String hostName;
+    private String model, manufacturer, type, hostName;
 
     //Getters
     public int getID()

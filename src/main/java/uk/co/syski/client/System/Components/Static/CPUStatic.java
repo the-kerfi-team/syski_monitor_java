@@ -2,13 +2,8 @@ package uk.co.syski.client.System.Components.Static;
 
 public class CPUStatic
 {
-    private int id;
-    private String model;
-    private String manufacturer;
-    private String arch;
-    private int clock; //DTO is double, change if needed.
-    private int coreCount;
-    private int threadCount;
+    private int id, clock, coreCount, threadCount;
+    private String model, manufacturer, arch;
 
     //Getters
     public int getID()
