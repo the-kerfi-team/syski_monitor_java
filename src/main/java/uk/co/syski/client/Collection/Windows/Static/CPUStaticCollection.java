@@ -15,7 +15,7 @@ public class CPUStaticCollection
         cpu.setModel(result[0]);
         cpu.setManufacturer(result[1]);
         cpu.setArchitecture(result[2]);
-        cpu.setClock(result[3]);
+        cpu.setClock(Integer.parseInt(result[3]));
         cpu.setCoreCount(Integer.parseInt(result[4]));
         cpu.setThreadCount(Integer.parseInt(result[5]));
         return cpu;
