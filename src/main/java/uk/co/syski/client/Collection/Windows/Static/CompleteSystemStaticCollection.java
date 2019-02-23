@@ -1,5 +1,8 @@
 package uk.co.syski.client.Collection.Windows.Static;
 
+import uk.co.syski.client.Collection.Windows.Static.Component.CPUStaticCollection;
+import uk.co.syski.client.Collection.Windows.Static.Component.OSStaticCollection;
+import uk.co.syski.client.Collection.Windows.Static.Component.SystemStaticCollection;
 import uk.co.syski.client.System.CompleteSystemStatic;
 
 import java.io.IOException;
@@ -11,6 +14,7 @@ public class CompleteSystemStaticCollection
         CompleteSystemStatic css = new CompleteSystemStatic();
         css.setCPU(CPUStaticCollection.getCPUStaticInfo());
         css.setSystem(SystemStaticCollection.getSystemStaticInfo());
+        css.setOS(OSStaticCollection.getOSStaticInfo());
         return css;
     }
 }
