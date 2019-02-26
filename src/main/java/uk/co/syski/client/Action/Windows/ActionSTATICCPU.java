@@ -4,10 +4,10 @@ import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonObject;
 import com.neovisionaries.ws.client.WebSocket;
 import uk.co.syski.client.Action.Action;
-import uk.co.syski.client.Collection.Windows.Static.CPUStaticCollection;
 import uk.co.syski.client.JSON.JSONResponse;
 
 import java.io.IOException;
+import uk.co.syski.client.Collection.Windows.Static.Component.CPUStaticCollection;
 
 public class ActionSTATICCPU extends Action
 {
