@@ -1,6 +1,6 @@
 package uk.co.syski.client.System.Components.Static;
 
-public class RAMStatic
+public class StorageStatic
 {
     private String model, manufacturer, type;
     private long bytes;

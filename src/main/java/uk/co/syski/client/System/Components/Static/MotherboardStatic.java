@@ -1,9 +1,8 @@
 package uk.co.syski.client.System.Components.Static;
 
-public class RAMStatic
+public class MotherboardStatic
 {
-    private String model, manufacturer, type;
-    private long bytes;
+    String model, manufacturer, version;
 
     //Getters
     public String getModel()
@@ -16,14 +15,9 @@ public class RAMStatic
         return manufacturer;
     }
 
-    public String getType()
+    public String getVersion()
     {
-        return type;
-    }
-
-    public long getBytes()
-    {
-        return bytes;
+        return version;
     }
 
     //Setters
@@ -37,13 +31,8 @@ public class RAMStatic
         manufacturer = m;
     }
 
-    public void setType(String t)
+    public void setVersion(String v)
     {
-        type = t;
-    }
-
-    public void setBytes(long b)
-    {
-        bytes = b;
+        version = v;
     }
 }
