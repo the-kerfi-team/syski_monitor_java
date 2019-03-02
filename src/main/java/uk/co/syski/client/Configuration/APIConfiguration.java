@@ -1,6 +1,5 @@
 package uk.co.syski.client.Configuration;
 
-import com.sun.org.apache.xml.internal.security.c14n.InvalidCanonicalizerException;
 
 public class APIConfiguration
 {
