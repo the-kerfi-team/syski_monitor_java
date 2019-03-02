@@ -30,17 +30,21 @@ public class WMICInterface
         commandArgs = commandArgs.substring(0, commandArgs.length() - 1);
 
         String[] outputValues = CMDInterface.executeWithResponse("wmic " + component + " get " + commandArgs + "/format:list");
-        String[][] output = new String[args.length][arraySize(outputValues, args[0])];
+        String[][] output = new String[arraySize(outputValues, args[0])][args.length];
 
-        for (int j = 0; j < arraySize(outputValues, args[0]); j++)
-            for (int c = 0; c < outputValues.length;  c++)
-                for (int i = 0, d = 0; i < args.length && d <= 0; i++)
-                    if (outputValues[c].toLowerCase().startsWith(args[i]))
-                    {
-                        output[j][i] = outputValues[c].substring(args[i].length() + 1);
-                        outputValues[c] = "";
-                        d++;
-                    }
+        for (int i = 0; i < args.length; i++)
+        {
+            int count = 0;
+            for (int l = 0; l < outputValues.length; l++)
+                if (outputValues[l].toLowerCase().startsWith(args[i]))
+                {
+                    output[count][i] = outputValues[l].substring(args[i].length() + 1);
+                    outputValues[l] = "";
+                    count++;
+                }
+        }
+
+
         return output;
     }
 
