@@ -16,6 +16,13 @@ public class ConfigurationLoader
         configINI = new Wini(new File(CONFIGURATION_FILE));
     }
 
+    public static void save() throws IOException
+    {
+        configINI.put("system", "id", SystemConfiguration.getSystemId());
+        configINI.put("system", "secret", SystemConfiguration.getSystemSecret());
+        configINI.store();
+    }
+    
     public static void loadAllConfigurations()
     {
         loadAccountConfiguration();
@@ -45,8 +52,8 @@ public class ConfigurationLoader
     {
         if (configINI != null)
         {
-            AccountConfiguration.setAccessToken(configINI.get("account", "accesstoken"));
-            AccountConfiguration.setRefreshToken(configINI.get("account", "refreshtoken"));
+            SystemConfiguration.setSystemId(configINI.get("system", "id"));
+            SystemConfiguration.setSystemSecret(configINI.get("system", "secret"));
         }
         else
             throw new NullPointerException("Please load the INI file before loading configurations.");

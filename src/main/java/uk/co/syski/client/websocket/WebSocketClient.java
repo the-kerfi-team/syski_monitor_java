@@ -122,8 +122,9 @@ public class WebSocketClient implements Runnable
         WebSocketFactory wsf = new WebSocketFactory();
         if (secureSocketLayer)
         {
-            wsf.setSSLContext(NaiveSSLContext.getInstance("TLS"));
-            wsf.setVerifyHostname(false);
+            // Used for testing so can use a self signed certificate
+            //wsf.setSSLContext(NaiveSSLContext.getInstance("TLS"));
+            wsf.setVerifyHostname(true);
         }
         return wsf.setConnectionTimeout(TIMEOUT)
            .createSocket("ws" + (secureSocketLayer ? "s" : "") + "://" + url)
