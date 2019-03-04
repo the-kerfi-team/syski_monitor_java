@@ -10,7 +10,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-
     <!-- https://mvnrepository.com/artifact/org.ini4j/ini4j -->
     <dependencies>
         <dependency>
@@ -18,18 +17,41 @@
             <artifactId>ini4j</artifactId>
             <version>0.5.1</version>
         </dependency>
-
         <dependency>
             <groupId>com.neovisionaries</groupId>
             <artifactId>nv-websocket-client</artifactId>
             <version>2.6</version>
         </dependency>
-
         <dependency>
             <groupId>com.eclipsesource.minimal-json</groupId>
             <artifactId>minimal-json</artifactId>
             <version>0.9.5</version>
         </dependency>
     </dependencies>
-
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>uk.co.syski.client.Main</mainClass>
+                       </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                     <execution>
+                         <id>make-assembly</id>
+                         <phase>package</phase>
+                         <goals>
+                             <goal>single</goal>
+                         </goals>
+                     </execution>
+                 </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

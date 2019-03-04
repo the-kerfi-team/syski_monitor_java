@@ -1,6 +1,5 @@
 package uk.co.syski.client.Configuration;
 
-
 public class APIConfiguration
 {
     private static String url;

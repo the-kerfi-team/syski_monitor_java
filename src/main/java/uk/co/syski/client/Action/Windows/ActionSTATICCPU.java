@@ -7,6 +7,7 @@ import uk.co.syski.client.Collection.Windows.Static.Component.CPUStaticCollectio
 import uk.co.syski.client.JSON.JSONResponse;
 
 import java.io.IOException;
+import uk.co.syski.client.Collection.Windows.Static.Component.CPUStaticCollection;
 
 public class ActionSTATICCPU extends Action
 {

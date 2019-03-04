@@ -16,6 +16,13 @@ public class ConfigurationLoader
         configINI = new Wini(new File(CONFIGURATION_FILE));
     }
 
+    public static void save() throws IOException
+    {
+        configINI.put("system", "id", SystemConfiguration.getSystemId());
+        configINI.put("system", "secret", SystemConfiguration.getSystemSecret());
+        configINI.store();
+    }
+    
     public static void loadAllConfigurations()
     {
         loadAccountConfiguration();
@@ -27,7 +34,15 @@ public class ConfigurationLoader
         if (configINI != null)
         {
             APIConfiguration.setURL(configINI.get("api", "url"));
-            APIConfiguration.setPort(Integer.parseInt(configINI.get("api", "port"))); //This throws exceptions that need to be caught.
+            try
+            {
+                APIConfiguration.setPort(Integer.parseInt(configINI.get("api", "port"))); //This throws exceptions that need to be caught.
+            }
+            catch (NumberFormatException nfe)
+            {
+                // Set the defalt port here when blank so it does connect to an invalid port of 0
+                // Handle an actual invalid port that the user has inputted to the file.
+            }
         }
         else
             throw new NullPointerException("Please load the INI file before loading configurations.");
@@ -37,8 +52,8 @@ public class ConfigurationLoader
     {
         if (configINI != null)
         {
-            AccountConfiguration.setAccessToken(configINI.get("account", "accesstoken"));
-            AccountConfiguration.setRefreshToken(configINI.get("account", "refreshtoken"));
+            SystemConfiguration.setSystemId(configINI.get("system", "id"));
+            SystemConfiguration.setSystemSecret(configINI.get("system", "secret"));
         }
         else
             throw new NullPointerException("Please load the INI file before loading configurations.");
