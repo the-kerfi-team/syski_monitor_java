@@ -16,7 +16,11 @@ public class JSONResponse
                     Json.object()
                         .add("cpu", getStaticCPUJSON(completeSystem.getCPU()))
                         .add("system", getStaticSystemJSON(completeSystem.getSystem()))
-                        .add("os", getStaticOSJSON(completeSystem.getOS())));
+                        .add("os", getStaticOSJSON(completeSystem.getOS())))
+                        .add("ram", getStaticRAMJSON(completeSystem.getRAM()))
+                        .add("storage", getStaticStorageJSON(completeSystem.getStorage()))
+                        .add("motherboard", getStaticMotherboardJSON(completeSystem.getMotherboard()))
+                        .add("gpu", getStaticGPUJSON(completeSystem.getGPU()));
 
     }
 
@@ -43,6 +47,12 @@ public class JSONResponse
     {
         return Json.object().add("action", "staticram")
                 .add("properties", Json.object().add("ram", getStaticRAMJSON(ram)));
+    }
+
+    public static JsonObject getJSON(StorageStatic[] storage)
+    {
+        return Json.object().add("action", "staticstorage")
+                .add("properties", getStaticStorageJSON(storage));
     }
 
     public static JsonObject getJSON(MotherboardStatic mb)
@@ -99,6 +109,22 @@ public class JSONResponse
                     .add("speed", r.getSpeed())
                     .add("size", r.getSize())
             );
+        return array;
+    }
+
+    private static JsonArray getStaticStorageJSON(StorageStatic[] storage)
+    {
+        JsonArray array = new JsonArray();
+        for (StorageStatic str : storage)
+        {
+            array.add(
+                    Json.object()
+                    .add("model", str.getModel())
+                    .add("manufacturer", str.getManufacturer())
+                    .add("type", str.getType())
+                    .add("size", str.getSize())
+            );
+        }
         return array;
     }
 
