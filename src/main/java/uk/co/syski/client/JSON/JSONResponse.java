@@ -16,11 +16,11 @@ public class JSONResponse
                     Json.object()
                         .add("cpu", getStaticCPUJSON(completeSystem.getCPU()))
                         .add("system", getStaticSystemJSON(completeSystem.getSystem()))
-                        .add("os", getStaticOSJSON(completeSystem.getOS())))
+                        .add("os", getStaticOSJSON(completeSystem.getOS()))
                         .add("ram", getStaticRAMJSON(completeSystem.getRAM()))
                         .add("storage", getStaticStorageJSON(completeSystem.getStorage()))
                         .add("motherboard", getStaticMotherboardJSON(completeSystem.getMotherboard()))
-                        .add("gpu", getStaticGPUJSON(completeSystem.getGPU()));
+                        .add("gpu", getStaticGPUJSON(completeSystem.getGPU())));
 
     }
 
