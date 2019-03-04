@@ -11,7 +11,7 @@ public class StorageStaticCollection
     public static StorageStatic[] getStorageStaticInfo() throws IOException
     {
         LinkedList<StorageStatic> storage = new LinkedList<>();
-        String[][] result = WMICInterface.getArrayInfo("diskdrive", new String[] {"caption", "manufacturer", "size", "inferfacetype"});
+        String[][] result = WMICInterface.getArrayInfo("diskdrive", new String[] {"caption", "manufacturer", "size", "interfacetype"});
         for (String[] str : result)
         {
             StorageStatic s = new StorageStatic();

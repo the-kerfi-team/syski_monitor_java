@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class GPUStaticCollection
 {
-    public static GPUStatic GPUStaticInfo() throws IOException
+    public static GPUStatic getGPUStaticInfo() throws IOException
     {
         GPUStatic gpu = new GPUStatic();
         String[] result = WMICInterface.getInfo("PATH Win32_VideoController", new String[] {"name", "adaptercompatibility"});
