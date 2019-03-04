@@ -1,5 +1,6 @@
 package uk.co.syski.client;
 
+import uk.co.syski.client.Collection.Windows.WMICInterface;
 import java.io.IOException;
 import uk.co.syski.client.Configuration.APIConfiguration;
 import uk.co.syski.client.Configuration.ConfigurationLoader;
