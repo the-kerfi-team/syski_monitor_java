@@ -1,6 +1,6 @@
 package uk.co.syski.client.Collection.Windows.Static.Component;
 
-import uk.co.syski.client.Collection.Windows.CMDInterface;
+import uk.co.syski.client.Collection.CMDInterface;
 import uk.co.syski.client.Collection.Windows.WMICInterface;
 import uk.co.syski.client.System.Components.Static.SystemStatic;
 

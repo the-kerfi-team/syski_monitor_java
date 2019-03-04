@@ -3,7 +3,7 @@ package uk.co.syski.client.Action.Windows;
 import com.eclipsesource.json.JsonObject;
 import com.neovisionaries.ws.client.WebSocket;
 import uk.co.syski.client.Action.Action;
-import uk.co.syski.client.Collection.Windows.CMDInterface;
+import uk.co.syski.client.Collection.CMDInterface;
 
 import java.io.IOException;
 
