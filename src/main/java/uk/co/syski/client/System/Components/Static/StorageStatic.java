@@ -3,7 +3,7 @@ package uk.co.syski.client.System.Components.Static;
 public class StorageStatic
 {
     private String model, manufacturer, type;
-    private long bytes;
+    private long size;
 
     //Getters
     public String getModel()
@@ -21,9 +21,9 @@ public class StorageStatic
         return type;
     }
 
-    public long getBytes()
+    public long getSize()
     {
-        return bytes;
+        return size;
     }
 
     //Setters
@@ -42,8 +42,8 @@ public class StorageStatic
         type = t;
     }
 
-    public void setBytes(long b)
+    public void setSize(long s)
     {
-        bytes = b;
+        size = s;
     }
 }

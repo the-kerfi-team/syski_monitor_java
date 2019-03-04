@@ -3,7 +3,8 @@ package uk.co.syski.client.System.Components.Static;
 public class RAMStatic
 {
     private String model, manufacturer, type;
-    private long bytes;
+    private int speed;
+    private long size;
 
     //Getters
     public String getModel()
@@ -21,9 +22,14 @@ public class RAMStatic
         return type;
     }
 
-    public long getBytes()
+    public int getSpeed()
     {
-        return bytes;
+        return speed;
+    }
+
+    public long getSize()
+    {
+        return size;
     }
 
     //Setters
@@ -42,8 +48,13 @@ public class RAMStatic
         type = t;
     }
 
-    public void setBytes(long b)
+    public void setSpeed(int s)
     {
-        bytes = b;
+        speed = s;
+    }
+
+    public void setSize(long b)
+    {
+        size = b;
     }
 }
