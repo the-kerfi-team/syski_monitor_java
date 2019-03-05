@@ -18,7 +18,7 @@ public class ActionSTATICSYSTEM extends Action
     @Override
     public void execute()
     {
-        System.out.println("[ACTION] - StaticSystem");
+        System.out.println("[ACTION] - Static System");
         if (properties != null)
         {
             try
