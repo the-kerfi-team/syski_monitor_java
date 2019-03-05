@@ -52,7 +52,7 @@ public class JSONResponse
     public static JsonObject getJSON(StorageStatic[] storage)
     {
         return Json.object().add("action", "staticstorage")
-                .add("properties", getStaticStorageJSON(storage));
+                .add("properties", Json.object().add("storage", getStaticStorageJSON(storage)));
     }
 
     public static JsonObject getJSON(MotherboardStatic mb)
@@ -121,7 +121,7 @@ public class JSONResponse
                     Json.object()
                     .add("model", str.getModel())
                     .add("manufacturer", str.getManufacturer())
-                    .add("type", str.getType())
+                    .add("interface", str.getType())
                     .add("size", str.getSize())
             );
         }

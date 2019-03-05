@@ -15,8 +15,15 @@ public class RAMStaticCollection
         for (String[] ram : result)
         {
             RAMStatic r = new RAMStatic();
-            r.setModel(ram[0]);
-            r.setSpeed(Integer.parseInt(ram[1]));
+            r.setModel((ram[0] == null || ram[0].isEmpty() ? null : ram[0]));
+            try
+            {
+                r.setSpeed(Integer.parseInt(ram[1]));
+            }
+            catch (Exception e)
+            {
+                r.setSpeed(0);
+            }
             r.setSize(Long.parseLong(ram[2]));
             RAMCollection.add(r);
         }

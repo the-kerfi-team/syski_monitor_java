@@ -18,7 +18,7 @@ public class ActionSTATICCOMPLETE extends Action
     @Override
     public void execute()
     {
-        System.out.println("[ACTION] - StaticComplete");
+        System.out.println("[ACTION] - Static Complete System");
         if (properties != null)
         {
             try
