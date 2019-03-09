@@ -5,6 +5,7 @@ import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import uk.co.syski.client.System.CompleteSystemStatic;
 import uk.co.syski.client.System.Components.Static.*;
+import uk.co.syski.client.System.Components.Variable.CPUVariable;
 
 public class JSONResponse
 {
@@ -65,6 +66,12 @@ public class JSONResponse
     {
         return Json.object().add("action", "staticgpu")
                 .add("properties", getStaticGPUJSON(gpu));
+    }
+
+    public static JsonObject getJSON(CPUVariable cpu)
+    {
+        return Json.object().add("action", "variablecpu")
+                .add("properties", getVariableCPUJSON(cpu));
     }
 
     private static JsonObject getStaticCPUJSON(CPUStatic cpu)
@@ -141,5 +148,12 @@ public class JSONResponse
         return Json.object()
                 .add("model", gpu.getModel())
                 .add("manufacturer", gpu.getManufacturer());
+    }
+
+    private static JsonObject getVariableCPUJSON(CPUVariable cpu)
+    {
+        return Json.object()
+                .add("load", cpu.getLoad())
+                .add("processes", cpu.getProcesses());
     }
 }
