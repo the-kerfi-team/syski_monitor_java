@@ -23,14 +23,7 @@ public class ActionVARIABLECPU extends Action
         System.out.println("[ACTION] - CPU Data");
         if (properties != null)
         {
-            try
-            {
-                websocket.sendText(JSONResponse.getJSON(CPUVariableCollection.getCPUVariableInfo()).toString());
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
+            websocket.sendText(JSONResponse.getJSON(CPUVariableCollection.getCurrentCPUVariableInfo()).toString());
         }
     }
 
