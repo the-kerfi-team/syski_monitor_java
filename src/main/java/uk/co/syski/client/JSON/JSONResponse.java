@@ -3,9 +3,13 @@ package uk.co.syski.client.JSON;
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
+import sun.nio.ch.Net;
 import uk.co.syski.client.System.CompleteSystemStatic;
 import uk.co.syski.client.System.Components.Static.*;
 import uk.co.syski.client.System.Components.Variable.CPUVariable;
+import uk.co.syski.client.System.Components.Variable.NetworkVariable;
+import uk.co.syski.client.System.Components.Variable.RAMVariable;
+import uk.co.syski.client.System.Components.Variable.StorageVariable;
 
 public class JSONResponse
 {
@@ -72,6 +76,24 @@ public class JSONResponse
     {
         return Json.object().add("action", "variablecpu")
                 .add("properties", getVariableCPUJSON(cpu));
+    }
+
+    public static JsonObject getJSON(RAMVariable ram)
+    {
+        return Json.object().add("action", "variableram")
+                .add("properties", getVariableRAMJSON(ram));
+    }
+
+    public static JsonObject getJSON(StorageVariable storage)
+    {
+        return Json.object().add("action", "variablestorage")
+                .add("properties", getVariableStorageJSON(storage));
+    }
+
+    public static JsonObject getJSON(NetworkVariable network)
+    {
+        return Json.object().add("action", "variablenetwork")
+                .add("properties", getVariableNetworkJSON(network));
     }
 
     private static JsonObject getStaticCPUJSON(CPUStatic cpu)
@@ -155,5 +177,30 @@ public class JSONResponse
         return Json.object()
                 .add("load", cpu.getLoad())
                 .add("processes", cpu.getProcesses());
+    }
+
+    private static JsonObject getVariableRAMJSON(RAMVariable ram)
+    {
+        return Json.object()
+                .add("free", ram.getFree());
+    }
+
+    private static JsonObject getVariableStorageJSON(StorageVariable storage)
+    {
+        return Json.object()
+                .add("time", storage.getTime())
+                .add("transfers", storage.getTransfers())
+                .add("reads", storage.getReads())
+                .add("writes", storage.getWrites())
+                .add("bytereads", storage.getByteReads())
+                .add("bytewrites", storage.getByteWrites());
+    }
+
+    private static JsonObject getVariableNetworkJSON(NetworkVariable network)
+    {
+        return Json.object()
+                .add("packets", network.getPackets())
+                .add("bytes", network.getBytes())
+                .add("bandwidth", network.getBandwidth());
     }
 }
