@@ -7,12 +7,13 @@ import java.io.IOException;
 
 public class StorageVariableCollection
 {
-    private static StorageVariable[] storage;
+    //private static StorageVariable[] storage;
+    private static StorageVariable storage = new StorageVariable();
     private static Thread timeThread, transfersThread, readsThread, writesThread, byteReadsThread, byteWritesThread;
     private static int sleepTime;
     private static boolean threadActive = false;
 
-    static
+    /*static
     {
         try
         {
@@ -26,9 +27,9 @@ public class StorageVariableCollection
         {
             e.printStackTrace();
         }
-    }
+    }*/
 
-    public static StorageVariable[] getStorageVariableInfo()
+    public static StorageVariable getStorageVariableInfo()
     {
         return storage;
     }
@@ -68,9 +69,10 @@ public class StorageVariableCollection
                 {
                     try
                     {
-                        float[] f = getTime();
+                        /*float f = getTime();
                         for (int i = 0; i < f.length; i++)
-                            storage[i].setTime(f[i]);
+                            storage.setTime(f[i]);*/
+                        storage.setTime(getTime());
                     }
                     catch (Exception e)
                     {
@@ -89,9 +91,10 @@ public class StorageVariableCollection
                 {
                     try
                     {
-                        float[] f = getTransfers();
+                        /*float[] f = getTransfers();
                         for (int i = 0; i < f.length; i++)
-                            storage[i].setTransfers(f[i]);
+                            storage[i].setTransfers(f[i]);*/
+                        storage.setTransfers(getTransfers());
                     }
                     catch (Exception e)
                     {
@@ -110,9 +113,10 @@ public class StorageVariableCollection
                 {
                     try
                     {
-                        float[] f = getReads();
+                        /*float[] f = getReads();
                         for (int i = 0; i < f.length; i++)
-                            storage[i].setReads(f[i]);
+                            storage[i].setReads(f[i]);*/
+                        storage.setReads(getReads());
                     }
                     catch (Exception e)
                     {
@@ -131,9 +135,10 @@ public class StorageVariableCollection
                 {
                     try
                     {
-                        float[] f = getWrites();
+                        /*float[] f = getWrites();
                         for (int i = 0; i < f.length; i++)
-                            storage[i].setWrites(f[i]);
+                            storage[i].setWrites(f[i]);*/
+                        storage.setWrites(getWrites());
                     }
                     catch (Exception e)
                     {
@@ -152,9 +157,10 @@ public class StorageVariableCollection
                 {
                     try
                     {
-                        float[] f = getByteReads();
+                        /*float[] f = getByteReads();
                         for (int i = 0; i < f.length; i++)
-                            storage[i].setByteReads(f[i]);
+                            storage[i].setByteReads(f[i]);*/
+                        storage.setByteReads(getByteReads());
                     }
                     catch (Exception e)
                     {
@@ -173,9 +179,10 @@ public class StorageVariableCollection
                 {
                     try
                     {
-                        float[] f = getByteWrites();
+                        /*float[] f = getByteWrites();
                         for (int i = 0; i < f.length; i++)
-                            storage[i].setByteWrites(f[i]);
+                            storage[i].setByteWrites(f[i]);*/
+                        storage.setByteWrites(getByteWrites());
                     }
                     catch (Exception e)
                     {
@@ -186,44 +193,47 @@ public class StorageVariableCollection
         };
     }
 
-    private static float[] getTime() throws IOException
+    private static float getTime() throws IOException
     {
         return parseResult(CMDInterface.executeWithResponse("typeperf \"\\PhysicalDisk(*)\\% Disk Time\" -sc 1"));
     }
 
-    private static float[] getTransfers() throws IOException
+    private static float getTransfers() throws IOException
     {
         return parseResult(CMDInterface.executeWithResponse("typeperf \"\\PhysicalDisk(*)\\Disk Transfers/sec\" -sc 1"));
     }
 
-    private static float[] getReads() throws IOException
+    private static float getReads() throws IOException
     {
         return parseResult(CMDInterface.executeWithResponse("typeperf \"\\PhysicalDisk(*)\\Disk Reads/sec\" -sc 1"));
     }
 
-    private static float[] getWrites() throws IOException
+    private static float getWrites() throws IOException
     {
         return parseResult(CMDInterface.executeWithResponse("typeperf \"\\PhysicalDisk(*)\\Disk Writes/sec\" -sc 1"));
     }
 
-    private static float[] getByteReads() throws IOException
+    private static float getByteReads() throws IOException
     {
         return parseResult(CMDInterface.executeWithResponse("typeperf \"\\PhysicalDisk(*)\\Avg. Disk Bytes/Read\" -sc 1"));
     }
 
-    private static float[] getByteWrites() throws IOException
+    private static float getByteWrites() throws IOException
     {
         return parseResult(CMDInterface.executeWithResponse("typeperf \"\\PhysicalDisk(*)\\Avg. Disk Bytes/Write\" -sc 1"));
     }
 
-    private static float[] parseResult(String[] args) throws IOException
+    private static float parseResult(String[] args) throws IOException
     {
-        String[] result = args[2].replace("\"", "").split(",");
+        /*String[] result = args[2].replace("\"", "").split(",");
         float[] resultf = new float[args[2].split(",").length];
         for (int i = 1; i < result.length; i++)
         {
             resultf[i] = Float.parseFloat(result[i]);
         }
-        return resultf;
+        return resultf;*/
+
+        String[] result = args[2].replace("\"", "").split(",");
+        return Float.parseFloat(result[result.length - 1]);
     }
 }
