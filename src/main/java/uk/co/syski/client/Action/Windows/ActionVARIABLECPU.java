@@ -2,11 +2,7 @@ package uk.co.syski.client.Action.Windows;
 
 import com.eclipsesource.json.JsonObject;
 import com.neovisionaries.ws.client.WebSocket;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import uk.co.syski.client.Action.Action;
-import uk.co.syski.client.Collection.Windows.CMDInterface;
 import uk.co.syski.client.Collection.Windows.Variable.Component.CPUVariableCollection;
 import uk.co.syski.client.JSON.JSONResponse;
 
