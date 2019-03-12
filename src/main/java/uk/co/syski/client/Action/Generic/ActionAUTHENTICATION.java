@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import uk.co.syski.client.Action.Action;
 import uk.co.syski.client.Configuration.SystemConfiguration;
 import uk.co.syski.client.Configuration.ConfigurationLoader;
+import uk.co.syski.client.Collection.Windows.Variable.Component.*;
 
 public class ActionAUTHENTICATION extends Action
 {
@@ -86,6 +87,10 @@ public class ActionAUTHENTICATION extends Action
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+            CPUVariableCollection.startThreads(0);
+            NetworkVariableCollection.startThreads(0);
+            RAMVariableCollection.startThreads();
+            StorageVariableCollection.startThreads(0);
         }
     }
 }
