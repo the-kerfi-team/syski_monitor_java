@@ -2,10 +2,7 @@ package uk.co.syski.client.Collection.Windows.Variable.Component;
 
 import uk.co.syski.client.Collection.Windows.CMDInterface;
 import uk.co.syski.client.System.Components.Variable.NetworkVariable;
-
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 
 public class NetworkVariableCollection
 {
@@ -14,7 +11,7 @@ public class NetworkVariableCollection
     private static int sleepTime;
     private static boolean threadActive = false;
 
-    public static NetworkVariable getNetworkVariableInfo() throws IOException
+    public static NetworkVariable getNetworkVariableInfo()
     {
         return network;
     }
