@@ -84,10 +84,10 @@ public class JSONResponse
                 .add("properties", getVariableRAMJSON(ram));
     }
 
-    public static JsonObject getJSON(StorageVariable[] storage)
+    public static JsonObject getJSON(StorageVariable storage)
     {
         return Json.object().add("action", "variablestorage")
-                .add("properties", Json.object().add("storage", getVariableStorageJSON(storage)));
+                .add("properties", getVariableStorageJSON(storage));
     }
 
     public static JsonObject getJSON(NetworkVariable network)
@@ -185,7 +185,7 @@ public class JSONResponse
                 .add("free", ram.getFree());
     }
 
-    private static JsonArray getVariableStorageJSON(StorageVariable[] storage)
+    /*private static JsonArray getVariableStorageJSON(StorageVariable[] storage)
     {
         JsonArray array = new JsonArray();
         for (StorageVariable str : storage)
@@ -201,6 +201,17 @@ public class JSONResponse
             );
         }
         return array;
+    }*/
+
+    private static JsonObject getVariableStorageJSON(StorageVariable storage)
+    {
+        return Json.object()
+                .add("time", storage.getTime())
+                .add("transfers", storage.getTransfers())
+                .add("reads", storage.getReads())
+                .add("writes", storage.getWrites())
+                .add("bytereads", storage.getByteReads())
+                .add("bytewrites", storage.getByteWrites());
     }
 
     private static JsonObject getVariableNetworkJSON(NetworkVariable network)
