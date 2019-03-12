@@ -48,7 +48,6 @@ public class CPUVariableCollection implements Runnable
             {
                 cpu.setProcesses(CMDInterface.executeWithResponse("tasklist").length - 3);
                 cpu.setLoad(getLoad());
-                //Thread.sleep(sleepTime);
             }
             catch (Exception e)
             {
