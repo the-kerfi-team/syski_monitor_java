@@ -3,7 +3,6 @@ package uk.co.syski.client.JSON;
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
-import sun.nio.ch.Net;
 import uk.co.syski.client.System.CompleteSystemStatic;
 import uk.co.syski.client.System.Components.Static.*;
 import uk.co.syski.client.System.Components.Variable.CPUVariable;

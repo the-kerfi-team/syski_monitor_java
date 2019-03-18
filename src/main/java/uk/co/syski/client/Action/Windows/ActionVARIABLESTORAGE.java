@@ -5,6 +5,7 @@ import com.neovisionaries.ws.client.WebSocket;
 import uk.co.syski.client.Action.Action;
 import uk.co.syski.client.Collection.Windows.Variable.Component.StorageVariableCollection;
 import uk.co.syski.client.JSON.JSONResponse;
+import uk.co.syski.client.util.Output;
 
 public class ActionVARIABLESTORAGE extends Action
 {
@@ -16,7 +17,7 @@ public class ActionVARIABLESTORAGE extends Action
     @Override
     public void execute()
     {
-        System.out.println("[ACTION] - Storage Data");
+        Output.printLineToConsole("[ACTION] - Storage Data");
         if (properties != null)
         {
             websocket.sendText(JSONResponse.getJSON(StorageVariableCollection.getStorageVariableInfo()).toString());

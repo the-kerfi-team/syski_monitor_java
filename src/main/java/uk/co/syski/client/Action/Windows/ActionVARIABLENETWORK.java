@@ -5,6 +5,7 @@ import uk.co.syski.client.JSON.JSONResponse;
 import com.eclipsesource.json.JsonObject;
 import com.neovisionaries.ws.client.WebSocket;
 import uk.co.syski.client.Collection.Windows.Variable.Component.NetworkVariableCollection;
+import uk.co.syski.client.util.Output;
 
 public class ActionVARIABLENETWORK extends Action
 {
@@ -16,7 +17,7 @@ public class ActionVARIABLENETWORK extends Action
     @Override
     public void execute()
     {
-        System.out.println("[ACTION] - Network Data");
+        Output.printLineToConsole("[ACTION] - Network Data");
         if (properties != null)
         {
             websocket.sendText(JSONResponse.getJSON(NetworkVariableCollection.getNetworkVariableInfo()).toString());
