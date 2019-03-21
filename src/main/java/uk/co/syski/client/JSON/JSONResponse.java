@@ -71,6 +71,12 @@ public class JSONResponse
                 .add("properties", getStaticGPUJSON(gpu));
     }
 
+    public static JsonObject getJSON(BIOSStatic bios)
+    {
+        return Json.object().add("action", "staticbios")
+                .add("properties", getStaticBIOSJSON(bios));
+    }
+
     public static JsonObject getJSON(CPUVariable cpu)
     {
         return Json.object().add("action", "variablecpu")
@@ -169,6 +175,15 @@ public class JSONResponse
         return Json.object()
                 .add("model", gpu.getModel())
                 .add("manufacturer", gpu.getManufacturer());
+    }
+
+    private static JsonObject getStaticBIOSJSON(BIOSStatic bios)
+    {
+        return Json.object()
+                .add("manufacturer", bios.getManufacturer())
+                .add("caption", bios.getCaption())
+                .add("version", bios.getVersion())
+                .add("date", bios.getDate().toString());
     }
 
     private static JsonObject getVariableCPUJSON(CPUVariable cpu)
