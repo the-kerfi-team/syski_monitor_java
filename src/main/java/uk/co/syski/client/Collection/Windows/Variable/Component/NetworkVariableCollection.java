@@ -1,6 +1,6 @@
 package uk.co.syski.client.Collection.Windows.Variable.Component;
 
-import uk.co.syski.client.Collection.Windows.CMDInterface;
+import uk.co.syski.client.Collection.CMDInterface;
 import uk.co.syski.client.System.Components.Variable.NetworkVariable;
 import java.io.IOException;
 
