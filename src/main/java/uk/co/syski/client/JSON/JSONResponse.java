@@ -5,6 +5,10 @@ import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import uk.co.syski.client.System.CompleteSystemStatic;
 import uk.co.syski.client.System.Components.Static.*;
+import uk.co.syski.client.System.Components.Variable.CPUVariable;
+import uk.co.syski.client.System.Components.Variable.NetworkVariable;
+import uk.co.syski.client.System.Components.Variable.RAMVariable;
+import uk.co.syski.client.System.Components.Variable.StorageVariable;
 
 public class JSONResponse
 {
@@ -65,6 +69,36 @@ public class JSONResponse
     {
         return Json.object().add("action", "staticgpu")
                 .add("properties", getStaticGPUJSON(gpu));
+    }
+
+    public static JsonObject getJSON(BIOSStatic bios)
+    {
+        return Json.object().add("action", "staticbios")
+                .add("properties", getStaticBIOSJSON(bios));
+    }
+
+    public static JsonObject getJSON(CPUVariable cpu)
+    {
+        return Json.object().add("action", "variablecpu")
+                .add("properties", getVariableCPUJSON(cpu));
+    }
+
+    public static JsonObject getJSON(RAMVariable ram)
+    {
+        return Json.object().add("action", "variableram")
+                .add("properties", getVariableRAMJSON(ram));
+    }
+
+    public static JsonObject getJSON(StorageVariable storage)
+    {
+        return Json.object().add("action", "variablestorage")
+                .add("properties", getVariableStorageJSON(storage));
+    }
+
+    public static JsonObject getJSON(NetworkVariable network)
+    {
+        return Json.object().add("action", "variablenetwork")
+                .add("properties", getVariableNetworkJSON(network));
     }
 
     private static JsonObject getStaticCPUJSON(CPUStatic cpu)
@@ -142,4 +176,64 @@ public class JSONResponse
                 .add("model", gpu.getModel())
                 .add("manufacturer", gpu.getManufacturer());
     }
+
+    private static JsonObject getStaticBIOSJSON(BIOSStatic bios)
+    {
+        return Json.object()
+                .add("manufacturer", bios.getManufacturer())
+                .add("caption", bios.getCaption())
+                .add("version", bios.getVersion())
+                .add("date", bios.getDate().toString());
+    }
+
+    private static JsonObject getVariableCPUJSON(CPUVariable cpu)
+    {
+        return Json.object()
+                .add("load", cpu.getLoad())
+                .add("processes", cpu.getProcesses());
+    }
+
+    private static JsonObject getVariableRAMJSON(RAMVariable ram)
+    {
+        return Json.object()
+                .add("free", ram.getFree());
+    }
+
+    /*private static JsonArray getVariableStorageJSON(StorageVariable[] storage)
+    {
+        JsonArray array = new JsonArray();
+        for (StorageVariable str : storage)
+        {
+            array.add(
+                    Json.object()
+                            .add("time", str.getTime())
+                            .add("transfers", str.getTransfers())
+                            .add("reads", str.getReads())
+                            .add("writes", str.getWrites())
+                            .add("bytereads", str.getByteReads())
+                            .add("bytewrites", str.getByteWrites())
+            );
+        }
+        return array;
+    }*/
+
+    private static JsonObject getVariableStorageJSON(StorageVariable storage)
+    {
+        return Json.object()
+                .add("time", storage.getTime())
+                .add("transfers", storage.getTransfers())
+                .add("reads", storage.getReads())
+                .add("writes", storage.getWrites())
+                .add("bytereads", storage.getByteReads())
+                .add("bytewrites", storage.getByteWrites());
+    }
+
+    private static JsonObject getVariableNetworkJSON(NetworkVariable network)
+    {
+        return Json.object()
+                .add("packets", network.getPackets())
+                .add("bytes", network.getBytes())
+                .add("bandwidth", network.getBandwidth());
+    }
+
 }

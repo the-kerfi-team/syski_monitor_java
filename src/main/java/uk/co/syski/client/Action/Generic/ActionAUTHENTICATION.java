@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 import uk.co.syski.client.Action.Action;
 import uk.co.syski.client.Configuration.SystemConfiguration;
 import uk.co.syski.client.Configuration.ConfigurationLoader;
+import uk.co.syski.client.Collection.Windows.Variable.Component.*;
+import uk.co.syski.client.util.Output;
 
 public class ActionAUTHENTICATION extends Action
 {
@@ -25,7 +27,7 @@ public class ActionAUTHENTICATION extends Action
     {
         if (properties == null || properties.isEmpty())
         {
-            System.out.println("[ACTION] - Authentication");
+            Output.printLineToConsole("[ACTION] - Authentication");
             if (SystemConfiguration.getSystemId().isEmpty() || SystemConfiguration.getSystemSecret().isEmpty())
             {
                 // Check if system key and secret are empty
@@ -35,17 +37,17 @@ public class ActionAUTHENTICATION extends Action
                 if (console == null) {
                     //System.out.println("Couldn't get Console instance");
                     //System.exit(0);
-                    System.out.println("Insecure Password Input!");
-                    System.out.println("Insecure Password Will Be Shown in the Console");
+                    Output.printLineToConsole("Insecure Password Input!");
+                    Output.printLineToConsole("Insecure Password Will Be Shown in the Console");
                     Scanner scanner = new Scanner(System.in);
                     while (username == null || username.isEmpty())
                     {
-                        System.out.print("Email: ");
+                        Output.printToConsole("Email: ");
                         username = scanner.nextLine();
                     }
                     while (password == null || password.length <= 6)
                     {
-                        System.out.print("Password: ");
+                        Output.printToConsole("Password: ");
                         password = scanner.nextLine().toCharArray();
                     }
                 }
@@ -75,6 +77,10 @@ public class ActionAUTHENTICATION extends Action
                                             .add("system", SystemConfiguration.getSystemId())
                                             .add("secret", SystemConfiguration.getSystemSecret()));
                 websocket.sendText(json.toString());
+                CPUVariableCollection.startThreads(0);
+                NetworkVariableCollection.startThreads(0);
+                RAMVariableCollection.startThreads();
+                StorageVariableCollection.startThreads(0);
             }
         }
         else
@@ -86,6 +92,10 @@ public class ActionAUTHENTICATION extends Action
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+            CPUVariableCollection.startThreads(0);
+            NetworkVariableCollection.startThreads(0);
+            RAMVariableCollection.startThreads();
+            StorageVariableCollection.startThreads(0);
         }
     }
 }

@@ -7,6 +7,7 @@ import uk.co.syski.client.Action.Action;
 import uk.co.syski.client.Collection.Windows.Static.Component.MotherboardStaticCollection;
 import uk.co.syski.client.Collection.Windows.Static.Component.StorageStaticCollection;
 import uk.co.syski.client.JSON.JSONResponse;
+import uk.co.syski.client.util.Output;
 
 public class ActionSTATICSTORAGE extends Action
 {
@@ -19,7 +20,7 @@ public class ActionSTATICSTORAGE extends Action
     @Override
     public void execute()
     {
-        System.out.println("[ACTION] - Static Storage");
+        Output.printLineToConsole("[ACTION] - Static Storage");
         if (properties != null)
         {
             try

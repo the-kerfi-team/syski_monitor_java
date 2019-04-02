@@ -7,6 +7,7 @@ import uk.co.syski.client.Action.Action;
 import uk.co.syski.client.Collection.Windows.Static.Component.CPUStaticCollection;
 import uk.co.syski.client.Collection.Windows.Static.Component.OSStaticCollection;
 import uk.co.syski.client.JSON.JSONResponse;
+import uk.co.syski.client.util.Output;
 
 public class ActionSTATICOS extends Action
 {
@@ -19,7 +20,7 @@ public class ActionSTATICOS extends Action
     @Override
     public void execute()
     {
-        System.out.println("[ACTION] - Static Operating System");
+        Output.printLineToConsole("[ACTION] - Static Operating System");
         if (properties != null)
         {
             try

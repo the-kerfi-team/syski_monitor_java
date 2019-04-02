@@ -6,6 +6,7 @@ import java.io.IOException;
 import uk.co.syski.client.Action.Action;
 import uk.co.syski.client.Collection.Windows.Static.Component.MotherboardStaticCollection;
 import uk.co.syski.client.JSON.JSONResponse;
+import uk.co.syski.client.util.Output;
 
 public class ActionSTATICMOTHERBOARD extends Action
 {
@@ -18,7 +19,7 @@ public class ActionSTATICMOTHERBOARD extends Action
     @Override
     public void execute()
     {
-        System.out.println("[ACTION] - Static Motherboard");
+        Output.printLineToConsole("[ACTION] - Static Motherboard");
         if (properties != null)
         {
             try
