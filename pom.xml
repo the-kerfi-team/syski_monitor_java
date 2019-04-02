@@ -27,6 +27,11 @@
             <artifactId>minimal-json</artifactId>
             <version>0.9.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.oshi</groupId>
+            <artifactId>oshi-core</artifactId>
+            <version>3.13.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
