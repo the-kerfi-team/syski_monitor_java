@@ -1,0 +1,36 @@
+package uk.co.syski.client.Action.Linux;
+
+import com.eclipsesource.json.JsonObject;
+import com.neovisionaries.ws.client.WebSocket;
+import uk.co.syski.client.Action.Action;
+import uk.co.syski.client.JSON.JSONResponse;
+import java.io.IOException;
+import uk.co.syski.client.Collection.Linux.Static.Component.CPUStaticCollection;
+import uk.co.syski.client.util.Output;
+
+public class ActionSTATICCPU extends Action
+{
+    
+    public ActionSTATICCPU(WebSocket websocket, JsonObject properties)
+    {
+        super(websocket, properties);
+    }
+
+    @Override
+    public void execute()
+    {
+        Output.printLineToConsole("[ACTION] - Static CPU");
+        if (properties != null)
+        {
+            try
+            {
+                websocket.sendText(JSONResponse.getJSON(CPUStaticCollection.getCPUStaticInfo()).toString());
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+}

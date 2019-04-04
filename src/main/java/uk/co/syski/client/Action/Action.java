@@ -64,7 +64,7 @@ public abstract class Action
             Class[] cArg = new Class[2];
             cArg[0] = WebSocket.class;
             cArg[1] = JsonObject.class;
-            actionClass = (Constructor<? extends Action>) Class.forName("uk.co.syski.client.Action." + (isWindowsSystem ? "Windows" : "unix") + ".Action" + action.toUpperCase()).getConstructor(cArg);
+            actionClass = (Constructor<? extends Action>) Class.forName("uk.co.syski.client.Action." + (isWindowsSystem ? "Windows" : "Linux") + ".Action" + action.toUpperCase()).getConstructor(cArg);
         }
         catch (NoSuchMethodException ex)
         {
