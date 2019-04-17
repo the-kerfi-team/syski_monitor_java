@@ -10,6 +10,8 @@ import uk.co.syski.client.System.Components.Variable.NetworkVariable;
 import uk.co.syski.client.System.Components.Variable.RAMVariable;
 import uk.co.syski.client.System.Components.Variable.StorageVariable;
 
+import java.io.File;
+
 public class JSONResponse
 {
     //Get the JSON for whatever object is passed as a parameter to the functions.
@@ -99,6 +101,12 @@ public class JSONResponse
     {
         return Json.object().add("action", "variablenetwork")
                 .add("properties", getVariableNetworkJSON(network));
+    }
+
+    public static JsonObject getJSON(File[] files)
+    {
+        return Json.object().add("action", "filestructure")
+                .add("properties", getFileStructureJSON(files));
     }
 
     private static JsonObject getStaticCPUJSON(CPUStatic cpu)
@@ -236,4 +244,26 @@ public class JSONResponse
                 .add("bandwidth", network.getBandwidth());
     }
 
+    private static JsonArray getFileStructureJSON(File[] files)
+    {
+        JsonArray array = new JsonArray();
+        for (File file : files)
+        {
+            array.add(
+                    Json.object()
+                            .add("name", file.getName())
+                            .add("path", file.getPath())
+                            .add("size", file.length())
+                            .add("lastedited", file.lastModified())
+                            .add("type", file.isDirectory() ? "directory" : "file"));
+        }
+        return array;
+    }
+
+    private static String getFileType(File f)
+    {
+        if (f.isDirectory())
+            return "directory";
+        return "file";
+    }
 }
