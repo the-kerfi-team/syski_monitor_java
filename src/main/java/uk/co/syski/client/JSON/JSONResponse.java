@@ -3,12 +3,14 @@ package uk.co.syski.client.JSON;
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
+import com.eclipsesource.json.JsonValue;
 import uk.co.syski.client.System.CompleteSystemStatic;
 import uk.co.syski.client.System.Components.Static.*;
 import uk.co.syski.client.System.Components.Variable.CPUVariable;
 import uk.co.syski.client.System.Components.Variable.NetworkVariable;
 import uk.co.syski.client.System.Components.Variable.RAMVariable;
 import uk.co.syski.client.System.Components.Variable.StorageVariable;
+import uk.co.syski.client.System.RunningProcess;
 
 public class JSONResponse
 {
@@ -99,6 +101,12 @@ public class JSONResponse
     {
         return Json.object().add("action", "variablenetwork")
                 .add("properties", getVariableNetworkJSON(network));
+    }
+
+    public static JsonObject getJSON(RunningProcess[] processes)
+    {
+        return Json.object().add("action", "runningprocesses")
+                .add("properties", Json.object().add("processes", getRunningProcessesJSON(processes)));
     }
 
     private static JsonObject getStaticCPUJSON(CPUStatic cpu)
@@ -234,6 +242,26 @@ public class JSONResponse
                 .add("packets", network.getPackets())
                 .add("bytes", network.getBytes())
                 .add("bandwidth", network.getBandwidth());
+    }
+
+    private static JsonArray getRunningProcessesJSON(RunningProcess[] processes)
+    {
+        JsonArray array = new JsonArray();
+        for (RunningProcess proc : processes)
+        {
+            array.add(
+                    Json.object()
+                            .add("id", proc.getID())
+                            .add("name", proc.getName())
+                            .add("memsize", proc.getSize())
+                            .add("kerneltime", proc.getKernalTime())
+                            .add("path", proc.getPath())
+                            .add("threads", proc.getThreadCount())
+                            .add("uptime", proc.getUptime())
+                            .add("parentid", proc.getParent())
+            );
+        }
+        return array;
     }
 
 }
