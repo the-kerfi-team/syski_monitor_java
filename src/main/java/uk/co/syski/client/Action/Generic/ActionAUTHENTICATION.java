@@ -66,19 +66,19 @@ public class ActionAUTHENTICATION extends Action
                     }
                 }
                 JsonObject json = Json.object()
-                                      .add("action", "user-authentication")
-                                      .add("properties", Json.object()
-                                            .add("email", username)
-                                            .add("password", String.valueOf(password)));
+                    .add("action", "user-authentication")
+                    .add("properties", Json.object()
+                        .add("email", username)
+                        .add("password", String.valueOf(password)));
                 websocket.sendText(json.toString());
             }
             else
             {
                 JsonObject json = Json.object()
-                                      .add("action", "system-authentication")
-                                      .add("properties", Json.object()
-                                            .add("system", SystemConfiguration.getSystemId())
-                                            .add("secret", SystemConfiguration.getSystemSecret()));
+                    .add("action", "system-authentication")
+                    .add("properties", Json.object()
+                        .add("system", SystemConfiguration.getSystemId())
+                        .add("secret", SystemConfiguration.getSystemSecret()));
                 websocket.sendText(json.toString());
                 authenticated = true;
             }
@@ -92,7 +92,16 @@ public class ActionAUTHENTICATION extends Action
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            authenticated = true;
+            JsonObject json = Json.object()
+                .add("action", "system-authentication")
+                .add("properties", Json.object()
+                    .add("system", SystemConfiguration.getSystemId())
+                    .add("secret", SystemConfiguration.getSystemSecret()));
+            websocket.sendText(json.toString());
+            CPUVariableCollection.startThreads(0);
+            NetworkVariableCollection.startThreads(0);
+            RAMVariableCollection.startThreads();
+            StorageVariableCollection.startThreads(0);
         }
     }
 }
