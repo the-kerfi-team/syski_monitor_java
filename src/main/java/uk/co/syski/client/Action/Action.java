@@ -49,7 +49,7 @@ public abstract class Action
                 }
                 catch (ClassNotFoundException cnfe)
                 {
-                    System.out.println("Not Valid Action");;
+                    System.out.println("Not Valid Action");
                 }
             }
         }

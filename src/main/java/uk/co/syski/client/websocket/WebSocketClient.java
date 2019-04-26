@@ -191,7 +191,7 @@ public class WebSocketClient implements Runnable
         } 
         catch (ClassNotFoundException cnfe)
         {
-            Output.printLineToConsole("[Error] Action not found");;
+            Output.printLineToConsole("[Error] Action not found");
         }
     }
     
