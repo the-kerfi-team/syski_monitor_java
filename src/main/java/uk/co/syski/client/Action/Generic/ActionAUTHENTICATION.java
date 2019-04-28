@@ -98,10 +98,7 @@ public class ActionAUTHENTICATION extends Action
                     .add("system", SystemConfiguration.getSystemId())
                     .add("secret", SystemConfiguration.getSystemSecret()));
             websocket.sendText(json.toString());
-            CPUVariableCollection.startThreads(0);
-            NetworkVariableCollection.startThreads(0);
-            RAMVariableCollection.startThreads();
-            StorageVariableCollection.startThreads(0);
+            authenticated = true;
         }
     }
 }
