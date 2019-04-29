@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
 import uk.co.syski.client.Action.Action;
+import uk.co.syski.client.util.Output;
 
 public class WebSocketClient implements Runnable
 {
@@ -25,7 +26,7 @@ public class WebSocketClient implements Runnable
     
     private final String url;
     private final boolean secureSocketLayer;
-    private static final int TIMEOUT = 1000;
+    private static final int TIMEOUT = 5000;
     private WebSocket websocket = null;
     
     public WebSocketClient(String url, boolean SSL)
@@ -156,12 +157,12 @@ public class WebSocketClient implements Runnable
     
     private void connected(WebSocket websocket, Map<String, List<String>> headers)
     {
-        System.out.println("[CONNECTION] Connected [Server: " + websocket.getSocket().getInetAddress() + ":" + websocket.getSocket().getPort() + "]");
+        Output.printLineToConsole("[CONNECTION] Connected [Server: " + websocket.getSocket().getInetAddress() + ":" + websocket.getSocket().getPort() + "]");
     }
     
     public void disconnected(WebSocket websocket, WebSocketFrame serverCloseFrame, WebSocketFrame clientCloseFrame, boolean closedByServer)
     {
-        System.out.println("[CONNECTION] Disconnected [Code: " + clientCloseFrame.getCloseCode() + "][Reason: " + clientCloseFrame.getCloseReason() + "]");
+        Output.printLineToConsole("[CONNECTION] Disconnected [Code: " + clientCloseFrame.getCloseCode() + "][Reason: " + clientCloseFrame.getCloseReason() + "]");
     }
     
     private void recieveMessage(WebSocket websocket, String message)
@@ -182,15 +183,15 @@ public class WebSocketClient implements Runnable
         }
         catch (ParseException pe)
         {
-            System.out.println("Not Valid Json Format");
+            Output.printLineToConsole("[Error] Recieved invalid json format");
         }
         catch (NullPointerException npe)
         {
-            System.out.println("Not Valid Action Format");
+            Output.printLineToConsole("[Error] Recieved invalid Action format");
         } 
         catch (ClassNotFoundException cnfe)
         {
-            System.out.println("Not Valid Action");;
+            Output.printLineToConsole("[Error] Action not found");
         }
     }
     

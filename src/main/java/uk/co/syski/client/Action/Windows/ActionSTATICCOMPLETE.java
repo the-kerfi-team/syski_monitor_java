@@ -7,6 +7,7 @@ import uk.co.syski.client.Collection.Windows.Static.CompleteSystemStaticCollecti
 import uk.co.syski.client.JSON.JSONResponse;
 
 import java.io.IOException;
+import uk.co.syski.client.util.Output;
 
 public class ActionSTATICCOMPLETE extends Action
 {
@@ -18,7 +19,7 @@ public class ActionSTATICCOMPLETE extends Action
     @Override
     public void execute()
     {
-        System.out.println("[ACTION] - Static Complete System");
+        Output.printLineToConsole("[ACTION] - Static Complete System");
         if (properties != null)
         {
             try

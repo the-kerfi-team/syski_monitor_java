@@ -3,17 +3,39 @@ package uk.co.syski.client.Configuration;
 import org.ini4j.Wini;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.FileSystemException;
 
 public class ConfigurationLoader
 {
-    public static final String CONFIGURATION_FILE = "config.ini"; //Should change this to an appdata folder.
+    private static final String CONFIGURATION_FILE = "config.ini"; //Should change this to an appdata folder.
 
     private static Wini configINI;
 
     public static void loadINI() throws IOException
     {
-        configINI = new Wini(new File(CONFIGURATION_FILE));
+        File configFile = new File(CONFIGURATION_FILE);
+        if (configFile.exists())
+            configINI = new Wini(configFile);
+        else
+            if (!configFile.createNewFile())
+                throw new FileNotFoundException();
+            else
+            {
+                configINI = new Wini(configFile);
+                saveDefaults();
+            }
+
+    }
+
+    private static void saveDefaults() throws IOException
+    {
+        configINI.put("system", "id", "");
+        configINI.put("system", "secret", "");
+        configINI.put("api", "url", APIConfiguration.getURL());
+        configINI.put("api", "port", APIConfiguration.getPort());
+        configINI.store();
     }
 
     public static void save() throws IOException

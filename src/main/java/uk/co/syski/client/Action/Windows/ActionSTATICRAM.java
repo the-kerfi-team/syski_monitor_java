@@ -6,6 +6,7 @@ import java.io.IOException;
 import uk.co.syski.client.Action.Action;
 import uk.co.syski.client.Collection.Windows.Static.Component.RAMStaticCollection;
 import uk.co.syski.client.JSON.JSONResponse;
+import uk.co.syski.client.util.Output;
 
 public class ActionSTATICRAM extends Action
 {
@@ -17,7 +18,7 @@ public class ActionSTATICRAM extends Action
     @Override
     public void execute()
     {
-        System.out.println("[ACTION] - Static RAM");
+        Output.printLineToConsole("[ACTION] - Static RAM");
         if (properties != null)
         {
             try

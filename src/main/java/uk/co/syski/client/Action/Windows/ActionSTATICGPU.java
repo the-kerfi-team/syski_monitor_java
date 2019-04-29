@@ -7,6 +7,7 @@ import uk.co.syski.client.Action.Action;
 import uk.co.syski.client.Collection.Windows.Static.Component.CPUStaticCollection;
 import uk.co.syski.client.Collection.Windows.Static.Component.GPUStaticCollection;
 import uk.co.syski.client.JSON.JSONResponse;
+import uk.co.syski.client.util.Output;
 
 /**
  *
@@ -23,7 +24,7 @@ public class ActionSTATICGPU extends Action
     @Override
     public void execute()
     {
-        System.out.println("[ACTION] - Static GPU");
+        Output.printLineToConsole("[ACTION] - Static GPU");
         if (properties != null)
         {
             try

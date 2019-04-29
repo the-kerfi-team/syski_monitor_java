@@ -5,6 +5,13 @@ public class APIConfiguration
     private static String url;
     private static int port;
 
+    static
+    {
+        //Default values for API are assumed here, could be changed later if needed.
+        url = "api.syski.co.uk";
+        port = 443;
+    }
+
     //Getters
     public static String getURL()
     {

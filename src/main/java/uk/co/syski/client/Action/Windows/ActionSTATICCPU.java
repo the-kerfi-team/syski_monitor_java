@@ -6,6 +6,7 @@ import uk.co.syski.client.Action.Action;
 import uk.co.syski.client.JSON.JSONResponse;
 import java.io.IOException;
 import uk.co.syski.client.Collection.Windows.Static.Component.CPUStaticCollection;
+import uk.co.syski.client.util.Output;
 
 public class ActionSTATICCPU extends Action
 {
@@ -18,7 +19,7 @@ public class ActionSTATICCPU extends Action
     @Override
     public void execute()
     {
-        System.out.println("[ACTION] - Static CPU");
+        Output.printLineToConsole("[ACTION] - Static CPU");
         if (properties != null)
         {
             try

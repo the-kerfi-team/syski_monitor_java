@@ -1,5 +1,7 @@
 package uk.co.syski.client.Collection.Windows;
 
+import uk.co.syski.client.Collection.CMDInterface;
+
 import java.io.IOException;
 
 public class WMICInterface

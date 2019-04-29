@@ -3,6 +3,7 @@ package uk.co.syski.client.Action.Generic;
 import com.eclipsesource.json.JsonObject;
 import com.neovisionaries.ws.client.WebSocket;
 import uk.co.syski.client.Action.Action;
+import uk.co.syski.client.util.Output;
 
 public class ActionERROR extends Action
 {
@@ -18,7 +19,7 @@ public class ActionERROR extends Action
         {
             try
             {
-                System.out.println("[ERROR] " + properties.get("message").asString());
+                Output.printLineToConsole("[ERROR] " + properties.get("message").asString());
             }
             catch (NullPointerException npe)
             {
