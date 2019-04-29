@@ -20,6 +20,7 @@ public class SystemStaticCollection
         system.setManufacturer(com.getManufacturer());
         system.setModel(com.getModel());
         system.setHostName((CMDInterface.executeWithResponse("hostname")[0]));
+        system.setType("linux");
         return system;
     }
 }
