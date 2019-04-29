@@ -191,7 +191,7 @@ public class JSONResponse
                 .add("manufacturer", bios.getManufacturer())
                 .add("caption", bios.getCaption())
                 .add("version", bios.getVersion())
-                .add("date", bios.getDate().toString());
+                .add("date", bios.getDate());
     }
 
     private static JsonObject getVariableCPUJSON(CPUVariable cpu)

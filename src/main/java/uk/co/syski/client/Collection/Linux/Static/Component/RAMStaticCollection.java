@@ -10,6 +10,7 @@ public class RAMStaticCollection
     public static RAMStatic[] getRAMStaticInfo() throws Exception
     {
         RAMStatic[] ram = new RAMStatic[1];
+        ram[0] = new RAMStatic();
         SystemInfo si = new SystemInfo();
         HardwareAbstractionLayer hal = si.getHardware();
         GlobalMemory mem = hal.getMemory();

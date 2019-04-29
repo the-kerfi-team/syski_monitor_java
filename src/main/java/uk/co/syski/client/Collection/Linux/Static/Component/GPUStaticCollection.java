@@ -13,6 +13,7 @@ public class GPUStaticCollection
 {
     public static GPUStatic getGPUStaticInfo() throws UnsupportedOperationException
     {
-        throw new UnsupportedOperationException();
+        return new GPUStatic();
+        //throw new UnsupportedOperationException();
     }
 }

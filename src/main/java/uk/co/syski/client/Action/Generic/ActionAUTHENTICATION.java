@@ -17,6 +17,9 @@ import uk.co.syski.client.util.Output;
 
 public class ActionAUTHENTICATION extends Action
 {
+    
+    protected boolean authenticated = false;
+    
     public ActionAUTHENTICATION(WebSocket websocket, JsonObject properties)
     {
         super(websocket, properties);
@@ -77,10 +80,7 @@ public class ActionAUTHENTICATION extends Action
                         .add("system", SystemConfiguration.getSystemId())
                         .add("secret", SystemConfiguration.getSystemSecret()));
                 websocket.sendText(json.toString());
-                CPUVariableCollection.startThreads(0);
-                NetworkVariableCollection.startThreads(0);
-                RAMVariableCollection.startThreads();
-                StorageVariableCollection.startThreads(0);
+                authenticated = true;
             }
         }
         else
@@ -98,10 +98,7 @@ public class ActionAUTHENTICATION extends Action
                     .add("system", SystemConfiguration.getSystemId())
                     .add("secret", SystemConfiguration.getSystemSecret()));
             websocket.sendText(json.toString());
-            CPUVariableCollection.startThreads(0);
-            NetworkVariableCollection.startThreads(0);
-            RAMVariableCollection.startThreads();
-            StorageVariableCollection.startThreads(0);
+            authenticated = true;
         }
     }
 }

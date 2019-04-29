@@ -15,7 +15,7 @@ public class CPUVariableCollection
         HardwareAbstractionLayer hal = si.getHardware();
         CentralProcessor proc = hal.getProcessor();
         ComputerSystem com = hal.getComputerSystem();
-        cpu.setLoad((float) proc.getSystemCpuLoad());
+        cpu.setLoad((float) proc.getSystemCpuLoad() * 100);
         cpu.setProcesses(si.getOperatingSystem().getProcessCount());
         return cpu;
     }

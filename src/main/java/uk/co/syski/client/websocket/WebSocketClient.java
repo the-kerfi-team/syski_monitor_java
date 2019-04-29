@@ -26,7 +26,7 @@ public class WebSocketClient implements Runnable
     
     private final String url;
     private final boolean secureSocketLayer;
-    private static final int TIMEOUT = 1000;
+    private static final int TIMEOUT = 5000;
     private WebSocket websocket = null;
     
     public WebSocketClient(String url, boolean SSL)
@@ -191,7 +191,7 @@ public class WebSocketClient implements Runnable
         } 
         catch (ClassNotFoundException cnfe)
         {
-            Output.printLineToConsole("[Error] Action not found");;
+            Output.printLineToConsole("[Error] Action not found");
         }
     }
     
